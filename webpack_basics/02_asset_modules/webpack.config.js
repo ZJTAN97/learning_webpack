@@ -12,7 +12,13 @@ module.exports = {
         rules: [
             {
                 test: /\.(png|jpg)$/,
-                type: "asset/resource",
+                type: "asset",
+                // configure the magic number to choose between inline or resource
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 3 * 1024, // 3 kilobytes
+                    },
+                },
             },
         ],
     },
